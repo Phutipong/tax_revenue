@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- actions -->
+    <record model="ir.actions.act_window" id="tax_list_action">
+        <field name="name">Taxing</field>
+        <field name="res_model">tax.revenue</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click this to create the first form</p>
+        </field>
+    </record>
+
+
+    <!-- menu -->
+    <menuitem id="main_tax_menu" name="Tax"/>
+    <menuitem id="tax_menu" name="Tax" parent="main_tax_menu"/>
+    <menuitem id="taxing_menu" name="Tax" parent="tax_menu" action="tax_list_action" sequence="1"/>
+</odoo>

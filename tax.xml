@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="Taxing_list_view">
+        <field name="name">Taxing.list</field>
+        <field name="model">tax.revenue</field>
+        <field name="arch" type="xml">
+            <tree string="taxing List">
+                <field name="id_tax"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="Taxing_form_view">
+        <field name="name">Taxing.form</field>
+        <field name="model">tax.revenue</field>
+        <field name="arch" type="xml">
+            <form string="taxing Form">
+                <sheet>
+                    <text>เลขประจำตัวผู้เสียภาษี</text>
+                    <field name="id_tax" style="width:200px"/>
+                    <button name="find_taxing" type="object" string="Search"/>
+                    <button name="button_open_tax_front" string="พิมพ์ใบหน้า" type="object"/>
+                    <button name="button_open_tax_link" string="พิมพ์ใบแนบ" type="object"/>
+
+                    <ul>
+
+                    </ul>
+                    <p align="right">
+                        <text>รายการซื้อ/ขาย</text>
+                        <field name="type_tax" style="width:100px"/>
+                        <text>ภาษี</text>
+                        <field name="type_amount" style="width:100px"/>
+                        <ul>
+
+                        </ul>
+                    </p>
+
+                    <p align="right">
+                        <text>เดือนที่จ่ายได้พึงประเมิน</text>
+                        <field name="months" style="width:100px"/>
+                        <text>พ.ศ.</text>
+                        <field name="years" style="width:100px"/>
+                        <button name="button_get_sale_order" string="Search" type="object"/>
+                    </p>
+                    <text>ข้อมูลบริษัท</text>
+                    <ul>
+
+                    </ul>
+                    <group>
+                        <field name="name_com" style="width:200px"/>
+                        <field name="address" style="width:400px"/>
+                        <field name="branch" style="width:100px"/>
+                    </group>
+
+                    <notebook>
+                        <page string="ใบหน้า">
+                            <ol>
+                                <li>
+                                    <text>รวมยอดเงินได้ทั้งสิ้น</text>
+                                    <field name="amount_total" style="width:100px"/>
+                                </li>
+                                <li>
+                                    <text>รวมยอดภาษีที่นำส่งทั้งสิน</text>
+                                    <field name="amount_tax" style="width:100px"/>
+                                </li>
+                                <li>
+                                    <text>เงินเพิ่ม</text>
+                                    <field name="add_money" style="width:100px"/>
+                                </li>
+                                <li>
+                                    <text>รวมยอดภาษีที่นำส่งทั้งสิ้น และเงินเพิ่ม(2 + 3)</text>
+                                    <field name="amount" style="width:100px"/>
+                                </li>
+                            </ol>
+                        </page>
+                        <page String="ใบแนบ">
+                            <field name="detail_line">
+                                <tree string="Select Products" editable="bottom">
+                                    <field name="customer_name"/>
+                                    <field name="branch_partner"/>
+                                    <field name="date_invoice"/>
+                                    <field name="origin"/>
+                                    <field name="product_name"/>
+                                    <field name="price_subtotal"/>
+                                    <field name="tax_line_amount"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+
